@@ -1,0 +1,26 @@
+import { ADD_EXPENSE } from "./ADD_EXPENSE";
+
+const initialState = {
+  expenses: [],
+};
+
+function expenseReducer(state = initialState, action) {
+  switch (action.type) {
+    case "ADD_EXPENSE":
+      return {
+        expenses: [
+          ...state.expenses,
+          {
+            amount: action.payload.amount,
+            category: action.payload.category,
+            comment: action.payload.comment,
+            dateAndTime: action.payload.dateAndTime,
+          },
+        ],
+      };
+    default:
+      return state;
+  }
+}
+
+export default expenseReducer;
