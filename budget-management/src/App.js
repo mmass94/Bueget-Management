@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import ExpenseForm from "./components/expenseForm";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <ExpenseForm />
+    </div>
+  );
 }
 
 export default App;

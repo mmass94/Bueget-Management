@@ -1,12 +1,19 @@
-import { ADD_EXPENSE } from "./ADD_EXPENSE";
+import { ADD_EXPENSE } from "./expensesTypes";
 
 const initialState = {
-  expenses: [],
+  expenses: [
+    {
+      amount: 0,
+      category: "",
+      comment: "",
+      dateAndTime: new Date(),
+    },
+  ],
 };
 
 function expenseReducer(state = initialState, action) {
   switch (action.type) {
-    case "ADD_EXPENSE":
+    case ADD_EXPENSE:
       return {
         expenses: [
           ...state.expenses,
