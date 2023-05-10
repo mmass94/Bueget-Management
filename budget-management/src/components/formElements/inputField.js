@@ -3,17 +3,11 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import Input from "@mui/material/Input";
 import InputLabel from "@mui/material/InputLabel";
+
 const TextInput = (props) => {
   return (
-    <div>
-      {/* <input
-        value={props.amount}
-        placeholder={props.placeholder}
-        type={props.type}
-        onChange={props.onChange}
-      /> */}
-
-      <InputLabel>Amount</InputLabel>
+    <span>
+      <InputLabel>{props.label}</InputLabel>
       <Input
         type={props.type}
         id={props.id}
@@ -22,7 +16,7 @@ const TextInput = (props) => {
           <InputAdornment position="start">{props.prefix}</InputAdornment>
         }
       />
-    </div>
+    </span>
   );
 };
 
