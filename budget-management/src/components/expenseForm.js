@@ -16,10 +16,14 @@ function ExpenseForm() {
   const [amountinput, setAmountinput] = useState(0);
   const [categorinput, setCategoryinput] = useState("");
   const [commentinput, setCommentinput] = useState("");
-  const [dateAndTimeinput, setdDteAndTime] = useState();
-
+  // const [dateAndTimeinput, setdDteAndTime] = useState(new Date());
+  const now = new Date();
+  const dateTimeString = now.toLocaleString();
   const dispatch = useDispatch();
-  console.log("amountinput is ", amountinput);
+  console.log(
+    `date is :,
+    ${dateTimeString}`
+  );
 
   const handleAmountInputChange = (event) => {
     setAmountinput(event.target.value);
@@ -30,7 +34,7 @@ function ExpenseForm() {
   };
 
   const handleClick = () => {
-    dispatch(addExpense(amountinput, "", commentinput));
+    dispatch(addExpense(amountinput, "", commentinput, dateTimeString));
   };
 
   return (
@@ -38,7 +42,7 @@ function ExpenseForm() {
       <Grid container>
         <Box sx={{ m: 2 }} />
         <Grid item xs={12}>
-          <text className="heading">Add expense</text>
+          <p className="heading">Add expense</p>
         </Grid>
         <Box sx={{ b: 2 }} />
         <Grid item xs={12} md={4} l={3}>

@@ -6,7 +6,7 @@ const initialState = {
       amount: 0,
       category: "",
       comment: "",
-      dateAndTime: new Date(),
+      dateAndTime: "",
     },
   ],
 };
