@@ -16,7 +16,6 @@ function ExpenseForm() {
   const [amountinput, setAmountinput] = useState(0);
   const [categorinput, setCategoryinput] = useState("");
   const [commentinput, setCommentinput] = useState("");
-  // const [dateAndTimeinput, setdDteAndTime] = useState(new Date());
   const now = new Date();
   const dateTimeString = now.toLocaleString();
   const dispatch = useDispatch();
