@@ -14,28 +14,30 @@ function TableOfContent() {
 
   return (
     <Paper>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>Amount</TableCell>
-            <TableCell align="right">Comment</TableCell>
-            <TableCell align="right">Time</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {Expenses.map((expense) => (
+      {Expenses.length > 1 ? (
+        <Table>
+          <TableHead>
             <TableRow>
-              <TableCell component="th" scope="row">
-                {"hi"}
-              </TableCell>
-              <TableCell align="right">{expense.amount}</TableCell>
-              <TableCell align="right">{expense.category}</TableCell>
-              <TableCell align="right">{expense.comment}</TableCell>
-              <TableCell align="right">{expense.dateAndTime}</TableCell>
+              <TableCell>Amount</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell align="middle">Comment</TableCell>
+              <TableCell align="middle">Time</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {Expenses.map((expense) => (
+              <TableRow>
+                <TableCell align="middle">{expense.amount}</TableCell>
+                <TableCell align="middle">{expense.category}</TableCell>
+                <TableCell align="middle">{expense.comment}</TableCell>
+                <TableCell align="middle">{expense.dateAndTime}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      ) : (
+        ""
+      )}
     </Paper>
   );
 }
