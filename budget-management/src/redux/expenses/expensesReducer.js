@@ -1,14 +1,7 @@
 import { ADD_EXPENSE } from "./expensesTypes";
 
 const initialState = {
-  expenses: [
-    {
-      // amount: 0,
-      // category: "",
-      // comment: "",
-      // dateAndTime: "",
-    },
-  ],
+  expenses: [],
 };
 
 function expenseReducer(state = initialState, action) {

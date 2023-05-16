@@ -4,7 +4,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import { useSelector } from "react-redux";
 
 function TableOfContent() {
@@ -13,17 +13,17 @@ function TableOfContent() {
   console.log("expenses type is:", typeof Expenses);
 
   return (
-    <Paper>
-      {Expenses.length > 1 ? (
+    <div>
+      {Expenses.length > 0 ? (
         <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Amount</TableCell>
-              <TableCell>Category</TableCell>
-              <TableCell align="middle">Comment</TableCell>
-              <TableCell align="middle">Time</TableCell>
-            </TableRow>
-          </TableHead>
+          <TableHead align="middle">Expenses details</TableHead>
+
+          <TableRow>
+            <TableCell>Amount</TableCell>
+            <TableCell>Category</TableCell>
+            <TableCell align="middle">Comment</TableCell>
+            <TableCell align="middle">Time</TableCell>
+          </TableRow>
           <TableBody>
             {Expenses.map((expense) => (
               <TableRow>
@@ -38,7 +38,7 @@ function TableOfContent() {
       ) : (
         ""
       )}
-    </Paper>
+    </div>
   );
 }
 

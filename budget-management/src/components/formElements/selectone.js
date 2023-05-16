@@ -5,17 +5,12 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function Selectone(props) {
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
-
   return (
     <div>
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+      <FormControl sx={{ m: 1, minWidth: 220 }}>
         <InputLabel id="demo-simple-select-standard-label">Category</InputLabel>
         <Select
+          required
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
           value={props.category}

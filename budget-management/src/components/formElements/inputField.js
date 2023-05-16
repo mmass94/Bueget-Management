@@ -1,20 +1,25 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import Input from "@mui/material/Input";
-import InputLabel from "@mui/material/InputLabel";
 
 const TextInput = (props) => {
   return (
     <span>
-      <InputLabel>{props.label}</InputLabel>
-      <Input
+      {/* <InputLabel>{props.label}</InputLabel> */}
+
+      <TextField
+        variant="outlined"
+        label={props.label}
+        // label="Outlined"
+        required
         type={props.type}
+        size="small"
         id={props.id}
         onChange={props.onChange}
-        startAdornment={
-          <InputAdornment position="start">{props.prefix}</InputAdornment>
-        }
+        // InputProps={{
+        //   startAdornment: (
+        //     <InputAdornment position="start">{props.prefix}</InputAdornment>
+        //   ),
+        // }}
       />
     </span>
   );

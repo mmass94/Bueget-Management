@@ -1,6 +1,6 @@
 import { ADD_EXPENSE } from "./expensesTypes";
 
-export const addExpense = (amount = 0, category, comment, dateAndTime) => {
+export const addExpense = (amount, category, comment, dateAndTime) => {
   return {
     type: ADD_EXPENSE,
     payload: {
