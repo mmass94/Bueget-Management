@@ -9,29 +9,11 @@ import {
   Legend,
 } from "recharts";
 import { useSelector } from "react-redux";
-
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-  },
-];
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 const BarChartComponent = () => {
   const Expenses = useSelector((state) => state.expense.expenses);
-  // console.log("Expenses is", Expenses);
-  // const modi = Expenses.map(({ amount, category }) => ({
-  //   category,
-  //   amount: parseFloat(amount),
-  // }));
 
   const aggregatedExpenses = Expenses.reduce(
     (acc, { amount, category, ...rest }) => {
@@ -46,31 +28,32 @@ const BarChartComponent = () => {
 
   console.log(resultArray);
 
-  // console.log("data is ", modi);
-
   return (
-    <div>
-      <div>hiii</div>
-      <BarChart
-        width={500}
-        height={300}
-        data={resultArray}
-        margin={{
-          top: 5,
-          right: 30,
-          left: 20,
-          bottom: 5,
-        }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="category" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        {/* <Bar dataKey="pv" fill="#8884d8" /> */}
-        <Bar dataKey="amount" fill="#82ca9d" />
-      </BarChart>
-    </div>
+    <Grid container alignItems="center">
+      <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+        <p className="heading">Chart</p>
+      </Grid>
+      <Grid item xs={12} style={{ display: "flex", justifyContent: "center" }}>
+        <BarChart
+          width={500}
+          height={300}
+          data={resultArray}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="category" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="amount" fill="#82ca9d" />
+        </BarChart>
+      </Grid>
+    </Grid>
   );
 };
 
