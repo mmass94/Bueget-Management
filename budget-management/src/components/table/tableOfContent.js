@@ -2,10 +2,8 @@ import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Button from "../formElements/button";
-import Box from "@mui/material/Box";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeExpense } from "../../redux/index";
@@ -25,32 +23,25 @@ function TableOfContent() {
     <div>
       {Expenses.length > 0 ? (
         <Table>
-          <TableHead align="middle">Expenses details</TableHead>
-
-          <TableRow>
-            <TableCell>Amount</TableCell>
-            <TableCell>Category</TableCell>
-            <TableCell align="middle">Comment</TableCell>
-            <TableCell align="middle">Time</TableCell>
-            {/* <TableCell align="middle">Update </TableCell> */}
-            <TableCell align="middle">Delete </TableCell>
-          </TableRow>
+          {/* <TableHead align="center">Expenses details</TableHead> */}
           <TableBody>
+            <TableRow>
+              <TableCell>Amount</TableCell>
+              <TableCell>Category</TableCell>
+              <TableCell align="center">Comment</TableCell>
+              <TableCell align="center">Time</TableCell>
+              <TableCell align="center">Delete </TableCell>
+            </TableRow>
             {Expenses.map((expense) => (
-              <TableRow>
-                <TableCell align="middle">{expense.amount}</TableCell>
-                <TableCell align="middle">{expense.category}</TableCell>
-                <TableCell align="middle">{expense.comment}</TableCell>
-                <TableCell align="middle">{expense.dateAndTime}</TableCell>
-                {/* <TableCell align="middle">
-                  <Button
-                    ButtonName={"Update"}
-                    color={"secondary"}
-                    size={"small"}
-                  ></Button>
-                </TableCell> */}
+              <TableRow key={expense.id}>
+                <TableCell align="center" key={expense.id}>
+                  {expense.amount}{" "}
+                </TableCell>
+                <TableCell align="center">{expense.category}</TableCell>
+                <TableCell align="center">{expense.comment}</TableCell>
+                <TableCell align="center">{expense.dateAndTime}</TableCell>
 
-                <TableCell align="middle">
+                <TableCell align="center">
                   <Button
                     onClick={() => handleRemoveExpense(expense.id)}
                     ButtonName={"Delete"}

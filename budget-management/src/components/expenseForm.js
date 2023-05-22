@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addExpense } from "../redux/index";
 import InputField from "./formElements/inputField";
 import Button from "./formElements/button";
@@ -10,9 +10,9 @@ import Selectone from "./formElements/selectone";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 function ExpenseForm() {
-  const amount = useSelector((state) => state.expense.amount);
-  const category = useSelector((state) => state.expense.category);
-  const comment = useSelector((state) => state.expense.comment);
+  // const amount = useSelector((state) => state.expense.amount);
+  // const category = useSelector((state) => state.expense.category);
+  // const comment = useSelector((state) => state.expense.comment);
 
   const [amountinput, setAmountinput] = useState("");
   const [categorinput, setCategoryinput] = useState("");
@@ -43,16 +43,11 @@ function ExpenseForm() {
         addExpense(amountinput, categorinput, commentinput, dateTimeString)
       );
       setFormSubmitted(true);
-
-      // setAmountinput(null); // Reset amount input
-      // setCategoryinput(null); // Reset category input
-      // setCommentinput(null); // Reset comment input
     } else {
       setError(true);
       setOpen(true);
     }
   };
-  // const resetter = () => {
   useEffect(() => {
     if (formSubmitted) {
       setAmountinput("");

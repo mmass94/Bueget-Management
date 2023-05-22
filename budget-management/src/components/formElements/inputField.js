@@ -2,8 +2,6 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 
 const TextInput = (props) => {
-  console.log("value from Text Feild is ", props.value);
-
   return (
     <span>
       <TextField
@@ -15,7 +13,6 @@ const TextInput = (props) => {
         id={props.id}
         onChange={props.onChange}
         value={props.value}
-        // key={props.resetKey}
       />
     </span>
   );
