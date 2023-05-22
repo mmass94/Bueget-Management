@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addExpense } from "../redux/index";
 import InputField from "./formElements/inputField";
@@ -7,7 +7,6 @@ import Button from "./formElements/button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Selectone from "./formElements/selectone";
-
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 function ExpenseForm() {
@@ -15,11 +14,12 @@ function ExpenseForm() {
   const category = useSelector((state) => state.expense.category);
   const comment = useSelector((state) => state.expense.comment);
 
-  const [amountinput, setAmountinput] = useState(null);
-  const [categorinput, setCategoryinput] = useState(null);
-  const [commentinput, setCommentinput] = useState(null);
+  const [amountinput, setAmountinput] = useState("");
+  const [categorinput, setCategoryinput] = useState("");
+  const [commentinput, setCommentinput] = useState("");
   const [error, setError] = useState(false);
   const [open, setOpen] = useState(true);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -38,24 +38,33 @@ function ExpenseForm() {
   const handleClick = () => {
     const now = new Date();
     const dateTimeString = now.toLocaleString();
-    amountinput !== null && categorinput !== null
-      ? dispatch(
-          addExpense(amountinput, categorinput, commentinput, dateTimeString)
-        )
-      : setError(true);
-  };
+    if (amountinput > 0 && categorinput !== "") {
+      dispatch(
+        addExpense(amountinput, categorinput, commentinput, dateTimeString)
+      );
+      setFormSubmitted(true);
 
+      // setAmountinput(null); // Reset amount input
+      // setCategoryinput(null); // Reset category input
+      // setCommentinput(null); // Reset comment input
+    } else {
+      setError(true);
+      setOpen(true);
+    }
+  };
   // const resetter = () => {
-  //   setAmountinput(null);
-  //   setCategoryinput(null);
-  // };
+  useEffect(() => {
+    if (formSubmitted) {
+      setAmountinput("");
+      setCategoryinput("");
+      setCommentinput("");
+      setFormSubmitted(false);
+    }
+  }, [formSubmitted]);
 
   const handleClose = () => {
     setOpen(false);
   };
-  console.log("Error Value", error);
-  console.log("amountinput  Value is :", amountinput);
-  console.log("categor Value", categorinput);
 
   return (
     <div>
@@ -83,7 +92,7 @@ function ExpenseForm() {
         <Grid item xs={12} md={4} l={3}>
           <InputField
             color="warning"
-            amount={amount}
+            value={amountinput}
             type={"number"}
             placeholder={"Amount"}
             id={"standard-adornment-amount"}
@@ -96,14 +105,14 @@ function ExpenseForm() {
         <Grid item xs={12} md={4} l={3}>
           <Selectone
             onChange={handleCategoryInputChange}
-            value={category}
+            value={categorinput}
             label={"category"}
           />
         </Grid>
 
         <Grid item xs={12} md={4} l={3}>
           <InputField
-            comment={comment}
+            value={commentinput}
             type={"text"}
             placeholder={"comment"}
             prefix={""}
@@ -121,7 +130,6 @@ function ExpenseForm() {
             style={{ marginBottom: "10px" }}
           >
             {" "}
-            Add Expense
           </Button>
         </Grid>
       </Grid>

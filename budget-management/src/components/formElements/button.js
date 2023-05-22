@@ -6,7 +6,12 @@ const button = (props) => {
   return (
     <div>
       <Box sx={{ m: 2 }} />
-      <Button variant="outlined" onClick={props.onClick}>
+      <Button
+        variant="outlined"
+        onClick={props.onClick}
+        color={props.color}
+        size={props.size}
+      >
         {props.ButtonName}
       </Button>
     </div>

@@ -1,4 +1,7 @@
 import { ADD_EXPENSE } from "./expensesTypes";
+import { REMOVE_EXPENSE } from "./expensesTypes";
+
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   expenses: [],
@@ -11,6 +14,7 @@ function expenseReducer(state = initialState, action) {
         expenses: [
           ...state.expenses,
           {
+            id: uuidv4(), // Generate a unique ID
             amount: action.payload.amount,
             category: action.payload.category,
             comment: action.payload.comment,
@@ -18,6 +22,16 @@ function expenseReducer(state = initialState, action) {
           },
         ],
       };
+
+    case REMOVE_EXPENSE:
+      const updatedExpenses = state.expenses.filter(
+        (expense) => expense.id !== action.payload
+      );
+      return {
+        ...state,
+        expenses: updatedExpenses,
+      };
+
     default:
       return state;
   }

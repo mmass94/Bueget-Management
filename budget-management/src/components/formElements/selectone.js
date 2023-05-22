@@ -13,7 +13,7 @@ export default function Selectone(props) {
           required
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={props.category}
+          value={props.value}
           onChange={props.onChange}
           label={props.label}
         >
@@ -29,6 +29,7 @@ export default function Selectone(props) {
           <MenuItem value={"Transportation"}>Transportation</MenuItem>
           <MenuItem value={"Cafe"}>Cafe</MenuItem>
           <MenuItem value={"Gifts"}>Gifts</MenuItem>
+          <MenuItem value={"Entertainment"}>Entertainment</MenuItem>
         </Select>
       </FormControl>
     </div>

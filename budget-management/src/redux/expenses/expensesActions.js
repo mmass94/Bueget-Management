@@ -1,4 +1,5 @@
 import { ADD_EXPENSE } from "./expensesTypes";
+import { REMOVE_EXPENSE } from "./expensesTypes";
 
 export const addExpense = (amount, category, comment, dateAndTime) => {
   return {
@@ -9,5 +10,12 @@ export const addExpense = (amount, category, comment, dateAndTime) => {
       comment,
       dateAndTime,
     },
+  };
+};
+
+export const removeExpense = (expenseId) => {
+  return {
+    type: REMOVE_EXPENSE,
+    payload: expenseId,
   };
 };
