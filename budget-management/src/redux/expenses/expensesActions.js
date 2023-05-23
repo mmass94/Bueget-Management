@@ -19,3 +19,9 @@ export const removeExpense = (expenseId) => {
     payload: expenseId,
   };
 };
+
+// actions.js
+export const updateExpenses = (expenses) => ({
+  type: "UPDATE_EXPENSES",
+  payload: expenses,
+});

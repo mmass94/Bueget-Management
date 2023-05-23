@@ -1,5 +1,6 @@
 import { ADD_EXPENSE } from "./expensesTypes";
 import { REMOVE_EXPENSE } from "./expensesTypes";
+import { UPDATE_EXPENSES } from "./expensesTypes";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -30,6 +31,12 @@ function expenseReducer(state = initialState, action) {
       return {
         ...state,
         expenses: updatedExpenses,
+      };
+
+    case UPDATE_EXPENSES:
+      return {
+        ...state,
+        expenses: action.payload,
       };
 
     default:

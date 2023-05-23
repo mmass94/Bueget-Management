@@ -36,6 +36,10 @@ const BarChartComponent = () => {
 
   return (
     <div>
+      <p className="totalAmount">
+        Total expneses : <b>{totalAmount} </b> <em>SAR</em>
+      </p>
+
       {Expenses.length > 0 ? (
         <Grid container alignItems="center">
           <Grid
