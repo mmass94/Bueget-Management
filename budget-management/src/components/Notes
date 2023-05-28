@@ -1,0 +1,17 @@
+/*
+
+Tabs : 
+ Tab 1 : Adding Accounts 
+ Tab 2 : Adding Expenses
+ Tab 3 : Vizuliaztion 
+
+ Other Tasks : 
+1- Dynamic select one account in the expense from comes from accounts - Account Name and Account Balance 
+2- Expense Value to be dedcuted from selected amount 
+3- Export all accounts and expenses and importing them to correctly be reflected 
+4- visulization
+5- Users 
+
+
+
+*/

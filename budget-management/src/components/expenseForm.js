@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addExpense } from "../redux/index";
+
 import InputField from "./formElements/inputField";
 import Button from "./formElements/button";
 import Box from "@mui/material/Box";
@@ -9,17 +10,16 @@ import Grid from "@mui/material/Grid";
 import Selectone from "./formElements/selectone";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-function ExpenseForm() {
-  // const amount = useSelector((state) => state.expense.amount);
-  // const category = useSelector((state) => state.expense.category);
-  // const comment = useSelector((state) => state.expense.comment);
+import { useSelector } from "react-redux";
 
+function ExpenseForm() {
   const [amountinput, setAmountinput] = useState("");
   const [categorinput, setCategoryinput] = useState("");
   const [commentinput, setCommentinput] = useState("");
   const [error, setError] = useState(false);
   const [open, setOpen] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const Accounts = useSelector((state) => state.account.accounts);
 
   const dispatch = useDispatch();
 
@@ -77,57 +77,64 @@ function ExpenseForm() {
       ) : (
         ""
       )}
-      <Grid container>
-        <Box sx={{ m: 2 }} />
-        <Grid item xs={12}>
-          <p className="heading">Add expense</p>
-        </Grid>
 
-        <Box sx={{ b: 2 }} />
-        <Grid item xs={12} md={4} l={3}>
-          <InputField
-            color="warning"
-            value={amountinput}
-            type={"number"}
-            placeholder={"Amount"}
-            id={"standard-adornment-amount"}
-            prefix={"$"}
-            onChange={handleAmountInputChange}
-            label={"Amount"}
-          ></InputField>
-        </Grid>
+      {Accounts.length > 0 ? (
+        <div>
+          <Grid container>
+            <Box sx={{ m: 2 }} />
+            <Grid item xs={12}>
+              <p className="heading">Add expense</p>
+            </Grid>
 
-        <Grid item xs={12} md={4} l={3}>
-          <Selectone
-            onChange={handleCategoryInputChange}
-            value={categorinput}
-            label={"category"}
-          />
-        </Grid>
+            <Box sx={{ b: 2 }} />
+            <Grid item xs={12} md={4} l={3}>
+              <InputField
+                color="warning"
+                value={amountinput}
+                type={"number"}
+                placeholder={"Amount"}
+                id={"standard-adornment-amount"}
+                prefix={"$"}
+                onChange={handleAmountInputChange}
+                label={"Amount"}
+              ></InputField>
+            </Grid>
 
-        <Grid item xs={12} md={4} l={3}>
-          <InputField
-            value={commentinput}
-            type={"text"}
-            placeholder={"comment"}
-            prefix={""}
-            onChange={handleCommentInputChange}
-            label={"Comment"}
-          ></InputField>
-        </Grid>
+            <Grid item xs={12} md={4} l={3}>
+              <Selectone
+                onChange={handleCategoryInputChange}
+                value={categorinput}
+                label={"category"}
+              />
+            </Grid>
 
-        <Box sx={{ m: 2 }} />
+            <Grid item xs={12} md={4} l={3}>
+              <InputField
+                value={commentinput}
+                type={"text"}
+                placeholder={"comment"}
+                prefix={""}
+                onChange={handleCommentInputChange}
+                label={"Comment"}
+              ></InputField>
+            </Grid>
 
-        <Grid item xs={12} md={12} l={12}>
-          <Button
-            ButtonName={"Add expense"}
-            onClick={handleClick}
-            style={{ marginBottom: "10px" }}
-          >
-            {" "}
-          </Button>
-        </Grid>
-      </Grid>
+            <Box sx={{ m: 2 }} />
+
+            <Grid item xs={12} md={12} l={12}>
+              <Button
+                ButtonName={"Add expense"}
+                onClick={handleClick}
+                style={{ marginBottom: "10px" }}
+              >
+                {" "}
+              </Button>
+            </Grid>
+          </Grid>
+        </div>
+      ) : (
+        ""
+      )}
 
       {/* <Test /> */}
     </div>

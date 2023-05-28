@@ -5,16 +5,21 @@ import Bar from "./components/visulization/barChart";
 import SaveExpensesButton from "./components/saveToJson";
 import LoadExpensesButton from "./components/readFromJson";
 import Box from "@mui/material/Box";
+// import Line from "./components/visulization/lineChart";
+import AddAccountFrom from "./components/accounts/addAcount";
 
 function App() {
   return (
     <div className="App">
+      <AddAccountFrom />
       <ExpenseForm />
       <TableOfContent />
       <Bar />
       <SaveExpensesButton />
       <LoadExpensesButton />
       <Box sx={{ m: 2 }} />
+
+      {/* <Line /> */}
     </div>
   );
 }
