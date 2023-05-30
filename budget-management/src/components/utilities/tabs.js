@@ -1,9 +1,13 @@
-import * as React from "react";
+import React from "react";
+import Box from "@mui/material/Box";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
+import Addaccount from "../accounts/addAcount";
+import ExpenseForm from "../expenseForm";
+import BarChartComp from "../visulization/barChart";
+import TableofContents from "../table/tableOfContent";
 
-export default function ScrollableTabsButtonAuto() {
+export default function NavTabs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -11,22 +15,18 @@ export default function ScrollableTabsButtonAuto() {
   };
 
   return (
-    <Box sx={{ maxWidth: { xs: 320, sm: 480 }, bgcolor: "background.paper" }}>
-      <Tabs
-        value={value}
-        onChange={handleChange}
-        variant="scrollable"
-        scrollButtons="auto"
-        aria-label="scrollable auto tabs example"
-      >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
-        <Tab label="Item Four" />
-        <Tab label="Item Five" />
-        <Tab label="Item Six" />
-        <Tab label="Item Seven" />
+    <Box sx={{ width: "100%" }}>
+      <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
+        <Tab label="Add Accounts" />
+        <Tab label="Add expenses" />
+        <Tab label="Charts" />
       </Tabs>
+
+      {value === 0 && <Addaccount />}
+      {value === 1 && <ExpenseForm />}
+      {value === 1 && <TableofContents />}
+
+      {value === 2 && <BarChartComp />}
     </Box>
   );
 }

@@ -17,7 +17,7 @@ function AddAccountFrom() {
   const [open, setOpen] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const dispatch = useDispatch();
-  const Expenses = useSelector((state) => state.expense.expenses);
+  // const Expenses = useSelector((state) => state.expense.expenses);
   const Accounts = useSelector((state) => state.account.accounts);
 
   const handleAmountInputChange = (event) => {
@@ -29,9 +29,15 @@ function AddAccountFrom() {
   };
 
   const handleClick = () => {
+    const AlreadExistBankName = Accounts.some(
+      (account) => account.name === nameinput
+    );
+
+    console.log("value is", AlreadExistBankName);
+
     const now = new Date();
     const dateTimeString = now.toLocaleString();
-    if (amountinput > 0 && setNameinput !== "") {
+    if (amountinput > 0 && nameinput !== "" && !AlreadExistBankName) {
       dispatch(addAccount(nameinput, amountinput, dateTimeString));
       setFormSubmitted(true);
     } else {
@@ -66,19 +72,17 @@ function AddAccountFrom() {
           align="middle"
         >
           <MuiAlert onClose={handleClose} severity="error">
-            Please Make sure that Bank Name and Balance are correctly entered !
+            Please Make sure that Bank Name and Balance are correctly entered
+            and tha Bank Name has not been entered before !
           </MuiAlert>
         </Snackbar>
       ) : (
         ""
       )}
-      <Grid container>
-        <Box sx={{ m: 2 }} />
-        <Grid item xs={12}>
-          <p className="heading">Add an Account</p>
-        </Grid>
+      <Box sx={{ m: 3 }} />
 
-        <Grid item xs={12} md={4} l={3}>
+      <Grid container>
+        <Grid item xs={12} md={3} l={3}>
           <InputField
             value={nameinput}
             type={"text"}
@@ -91,7 +95,7 @@ function AddAccountFrom() {
 
         <Box sx={{ b: 2 }} />
 
-        <Grid item xs={12} md={4} l={3}>
+        <Grid item xs={12} md={3} l={3}>
           <InputField
             color="warning"
             value={amountinput}
@@ -103,12 +107,8 @@ function AddAccountFrom() {
             label={"Balance"}
           ></InputField>
         </Grid>
-
-        <Grid item xs={12} md={4} l={3}>
-          <AccountsTable />
-        </Grid>
-
-        <Grid item xs={12} md={12} l={12}>
+        {/* <Box sx={{ t: -2 }} /> */}
+        <Grid item xs={2} md={2} l={12}>
           <Button
             ButtonName={"Add account"}
             onClick={handleClick}
@@ -116,6 +116,9 @@ function AddAccountFrom() {
           >
             {" "}
           </Button>
+        </Grid>
+        <Grid item xs={12} md={3} l={3}>
+          <AccountsTable />
         </Grid>
       </Grid>
     </div>

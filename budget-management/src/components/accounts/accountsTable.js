@@ -3,33 +3,33 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import Button from "../formElements/button";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 
 function AccountsTable() {
-  //   const dispatch = useDispatch();
-
   const Accounts = useSelector((state) => state.account.accounts);
 
-  //   const handleRemoveExpense = (expenseId) => {
-  //     dispatch(removeExpense(expenseId));
-  //   };
-
   return (
-    <div>
+    <span>
       {Accounts.length > 0 ? (
         <Table>
           <TableBody>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Total Amount</TableCell>
+              <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                Name
+              </TableCell>
+              <TableCell align="center" sx={{ fontWeight: "bold" }}>
+                Total Amount
+              </TableCell>
             </TableRow>
-            {Accounts.map((account) => (
-              <TableRow key={account.id}>
+            {Accounts.map((account, index) => (
+              <TableRow
+                key={account.id}
+                sx={{ backgroundColor: index % 2 === 0 ? "#f3f3f3" : "white" }}
+              >
                 <TableCell align="center">{account.name}</TableCell>
                 <TableCell align="center">{account.amount}</TableCell>
-
                 <TableCell align="center">
                   {/* <Button
                     onClick={() => handleRemoveExpense(expense.id)}
@@ -45,7 +45,7 @@ function AccountsTable() {
       ) : (
         ""
       )}
-    </div>
+    </span>
   );
 }
 

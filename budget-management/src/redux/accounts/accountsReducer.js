@@ -1,5 +1,6 @@
 import { ADD_ACCOUNT } from "./accountsTypes";
 import { REMOVE_ACCOUNT } from "./accountsTypes";
+import { UPDATE_ACCOUNT_BALANCE } from "./accountsTypes";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -29,6 +30,22 @@ function accountReducer(state = initialState, action) {
       return {
         ...state,
         accounts: updatedAccounts,
+      };
+
+    case UPDATE_ACCOUNT_BALANCE:
+      const { accountId, newBalance } = action.payload;
+
+      // Find the account with the specified ID
+      const updatedBalances = state.accounts.map((account) => {
+        if (account.id === accountId) {
+          // Update the account balance
+          return { ...account, amount: newBalance };
+        }
+        return account;
+      });
+      return {
+        ...state,
+        accounts: updatedBalances,
       };
 
     default:

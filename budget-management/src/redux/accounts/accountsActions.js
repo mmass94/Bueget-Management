@@ -1,5 +1,6 @@
 import { ADD_ACCOUNT } from "./accountsTypes";
 import { REMOVE_ACCOUNT } from "./accountsTypes";
+import { UPDATE_ACCOUNT_BALANCE } from "./accountsTypes";
 
 export const addAccount = (name, amount, dateAndTime) => {
   return {
@@ -19,8 +20,10 @@ export const removeAccount = (accountId) => {
   };
 };
 
-// // actions.js
-// export const updateExpenses = (expenses) => ({
-//   type: "UPDATE_EXPENSES",
-//   payload: expenses,
-// });
+// Define the action creator function
+export const updateAccountBalance = (accountId, newBalance) => {
+  return {
+    type: UPDATE_ACCOUNT_BALANCE,
+    payload: { accountId, newBalance },
+  };
+};

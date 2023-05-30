@@ -1,17 +1,18 @@
 /*
-
-Tabs : 
+  Tasks : 
+1- Dynamic select one account in the expense from comes from accounts - Account Name and Account Balance  // done
+    update values of array of obs of bank balance when inserting expense and deducting from them // done  
+    select one - generlization 
+    read-only customization  // done 
+    Account should not accept same bank name   //  done
+2- Expense Value to be dedcuted from selected amount  // done
+3- Tabs and some Styling : 
  Tab 1 : Adding Accounts 
  Tab 2 : Adding Expenses
  Tab 3 : Vizuliaztion 
-
- Other Tasks : 
-1- Dynamic select one account in the expense from comes from accounts - Account Name and Account Balance 
-2- Expense Value to be dedcuted from selected amount 
-3- Export all accounts and expenses and importing them to correctly be reflected 
-4- visulization
-5- Users 
-
+4- Export all accounts and expenses and importing them to correctly be reflected 
+5- visulization another bar chart /  all expensed by  day(X-axis) 
+6- Users 
 
 
 */

@@ -7,16 +7,18 @@ import LoadExpensesButton from "./components/readFromJson";
 import Box from "@mui/material/Box";
 // import Line from "./components/visulization/lineChart";
 import AddAccountFrom from "./components/accounts/addAcount";
+import Tabs from "./components/utilities/tabs";
 
 function App() {
   return (
     <div className="App">
-      <AddAccountFrom />
+      <Tabs></Tabs>
+      {/* <AddAccountFrom />
       <ExpenseForm />
       <TableOfContent />
       <Bar />
       <SaveExpensesButton />
-      <LoadExpensesButton />
+      <LoadExpensesButton /> */}
       <Box sx={{ m: 2 }} />
 
       {/* <Line /> */}

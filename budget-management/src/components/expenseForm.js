@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addExpense } from "../redux/index";
+import { addExpense, updateAccountBalance } from "../redux/index";
 
 import InputField from "./formElements/inputField";
 import Button from "./formElements/button";
@@ -11,7 +11,9 @@ import Selectone from "./formElements/selectone";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useSelector } from "react-redux";
-
+import Select from "@mui/material/Select";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 function ExpenseForm() {
   const [amountinput, setAmountinput] = useState("");
   const [categorinput, setCategoryinput] = useState("");
@@ -20,6 +22,18 @@ function ExpenseForm() {
   const [open, setOpen] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const Accounts = useSelector((state) => state.account.accounts);
+  const Expenses = useSelector((state) => state.expense.expenses);
+
+  const accountNames = [...new Set(Accounts.map((account) => account.name))]; // set removes duplicates
+
+  const [Name, setName] = useState("");
+  const accountBalance =
+    Accounts.find((account) => account.name === Name)?.amount || "";
+  //Search for the first element in the Accounts array that satisfies the given condition.
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
 
   const dispatch = useDispatch();
 
@@ -42,6 +56,17 @@ function ExpenseForm() {
       dispatch(
         addExpense(amountinput, categorinput, commentinput, dateTimeString)
       );
+
+      // Find the account object corresponding to the selected Name
+      const selectedAccount = Accounts.find((account) => account.name === Name);
+
+      if (selectedAccount) {
+        // Subtract the expense amount from the account balance
+        const updatedBalance = selectedAccount.amount - amountinput;
+
+        // Dispatch the updateAccountBalance action to update the account balance in Redux store
+        dispatch(updateAccountBalance(selectedAccount.id, updatedBalance));
+      }
       setFormSubmitted(true);
     } else {
       setError(true);
@@ -77,17 +102,13 @@ function ExpenseForm() {
       ) : (
         ""
       )}
+      <Box sx={{ m: 2 }} />
 
       {Accounts.length > 0 ? (
         <div>
           <Grid container>
-            <Box sx={{ m: 2 }} />
-            <Grid item xs={12}>
-              <p className="heading">Add expense</p>
-            </Grid>
-
             <Box sx={{ b: 2 }} />
-            <Grid item xs={12} md={4} l={3}>
+            <Grid item xs={12} md={3}>
               <InputField
                 color="warning"
                 value={amountinput}
@@ -100,7 +121,7 @@ function ExpenseForm() {
               ></InputField>
             </Grid>
 
-            <Grid item xs={12} md={4} l={3}>
+            <Grid item xs={12} md={3}>
               <Selectone
                 onChange={handleCategoryInputChange}
                 value={categorinput}
@@ -108,7 +129,7 @@ function ExpenseForm() {
               />
             </Grid>
 
-            <Grid item xs={12} md={4} l={3}>
+            <Grid item xs={12} md={3}>
               <InputField
                 value={commentinput}
                 type={"text"}
@@ -117,6 +138,37 @@ function ExpenseForm() {
                 onChange={handleCommentInputChange}
                 label={"Comment"}
               ></InputField>
+            </Grid>
+            <Box sx={{ m: 2 }} />
+
+            <Grid item xs={12} md={3}>
+              <InputLabel id="name-select-label">Name</InputLabel>
+              <Select
+                labelId="name-select-label"
+                id="name-select"
+                value={Name}
+                label="Account Name"
+                onChange={handleNameChange}
+              >
+                {accountNames.map((name) => (
+                  <MenuItem key={name} value={name}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </Grid>
+
+            <Grid item xs={12} md={3}>
+              <InputField
+                disabled={"disabled"}
+                value={accountBalance}
+                type="text"
+                placeholder="Account Balance"
+                prefix=""
+                label="Account Balance"
+                readOnly
+                variant={"filled"}
+              />
             </Grid>
 
             <Box sx={{ m: 2 }} />
