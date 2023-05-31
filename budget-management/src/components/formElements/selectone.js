@@ -1,35 +1,38 @@
-import * as React from "react";
+import React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function Selectone(props) {
+  const { value, onChange, label, options } = props;
+
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 220 }}>
-        <InputLabel id="demo-simple-select-standard-label">Category</InputLabel>
+      <FormControl sx={{ minWidth: 220 }}>
+        <InputLabel
+          id="demo-simple-select-standard-label"
+          style={{ fontSize: "13px" }} // Customize the font size
+        >
+          {props.label}
+        </InputLabel>
         <Select
+          sx={{ height: 45 }}
           required
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={props.value}
-          onChange={props.onChange}
-          label={props.label}
+          value={value}
+          onChange={onChange}
+          label={label}
         >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          <MenuItem value={"Food & Drink"}>Food & Drink</MenuItem>
-          <MenuItem value={"Rent"}>Rent</MenuItem>
-          <MenuItem value={"Bills"}>Bills</MenuItem>
-          <MenuItem value={"Education"}>Education</MenuItem>
-          <MenuItem value={"Health"}>Health</MenuItem>
-          <MenuItem value={"Clothing"}>Clothing</MenuItem>
-          <MenuItem value={"Transportation"}>Transportation</MenuItem>
-          <MenuItem value={"Cafe"}>Cafe</MenuItem>
-          <MenuItem value={"Gifts"}>Gifts</MenuItem>
-          <MenuItem value={"Entertainment"}>Entertainment</MenuItem>
+          {options.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </div>

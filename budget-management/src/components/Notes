@@ -6,10 +6,10 @@
     read-only customization  // done 
     Account should not accept same bank name   //  done
 2- Expense Value to be dedcuted from selected amount  // done
-3- Tabs and some Styling : 
- Tab 1 : Adding Accounts 
- Tab 2 : Adding Expenses
- Tab 3 : Vizuliaztion 
+3- Tabs and some Styling :   //done 
+ Tab 1 : Adding Accounts  //done
+ Tab 2 : Adding Expenses  //done
+ Tab 3 : Vizuliaztion  //done
 4- Export all accounts and expenses and importing them to correctly be reflected 
 5- visulization another bar chart /  all expensed by  day(X-axis) 
 6- Users 
