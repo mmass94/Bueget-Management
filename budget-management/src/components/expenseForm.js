@@ -50,7 +50,7 @@ function ExpenseForm() {
   const handleClick = () => {
     const now = new Date();
     const dateTimeString = now.toLocaleString();
-    if (amountinput > 0 && categorinput !== "") {
+    if (amountinput > 0 && categorinput !== "" && Name !== "") {
       dispatch(
         addExpense(amountinput, categorinput, commentinput, dateTimeString)
       );
@@ -89,7 +89,8 @@ function ExpenseForm() {
           align="middle"
         >
           <MuiAlert onClose={handleClose} severity="error">
-            Please make sure that the amount and category are correctly entered!
+            Please make sure that the Account , Expense amount and category are
+            correctly entered!
           </MuiAlert>
         </Snackbar>
       ) : (

@@ -14,10 +14,10 @@ import Grid from "@mui/material/Grid";
 
 const BarChartComponent = () => {
   const Expenses = useSelector((state) => state.expense.expenses);
-  const totalAmount = Expenses.reduce(
-    (sum, { amount }) => sum + parseInt(amount),
-    0
-  );
+  // const totalAmount = Expenses.reduce(
+  //   (sum, { amount }) => sum + parseInt(amount),
+  //   0
+  // );
 
   // console.log("Total is:", totalAmount);
 
@@ -36,10 +36,6 @@ const BarChartComponent = () => {
 
   return (
     <div>
-      <p className="totalAmount">
-        Total expneses : <b>{totalAmount} </b> <em>SAR</em>
-      </p>
-
       {Expenses.length > 0 ? (
         <Grid container alignItems="center">
           <Grid
@@ -47,7 +43,7 @@ const BarChartComponent = () => {
             xs={12}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <p className="heading">Chart</p>
+            <p className="heading">Expenses per Category</p>
           </Grid>
           <Grid
             item
