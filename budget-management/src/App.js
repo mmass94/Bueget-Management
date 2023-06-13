@@ -13,15 +13,8 @@ function App() {
   return (
     <div className="App">
       <Tabs></Tabs>
-      {/* <AddAccountFrom />
-      <ExpenseForm />
-      <TableOfContent />
-      <Bar />
-      <SaveExpensesButton />
-      <LoadExpensesButton /> */}
-      <Box sx={{ m: 2 }} />
 
-      {/* <Line /> */}
+      <Box sx={{ m: 2 }} />
     </div>
   );
 }

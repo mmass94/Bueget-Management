@@ -11,10 +11,20 @@
  Tab 2 : Adding Expenses  //done
  Tab 3 : Vizuliaztion  //done
 4- Export all accounts and expenses and importing them to correctly be reflected 
-5- visulization another bar chart /  all expensed by  day(X-axis) 
+5- visulization another bar chart /  all expensed by day (X-axis)   //done
 6- Users 
-7- Pagenation expenses (No more than 10 expenses)
-8-delete an account 
+7- Pagenation expenses (No more than 6 expenses in one page)   // done
+8-delete an account // done
 9- When deleting an expense amount should be added to back to the bank that has been taken from 
+
+
+
+
+10 - restricting the Account name into Characters only - not Numbers
+11- restricting Account balance into -3000 SAR(minus 3000) - Not more 3001 is not allowed
+12- Adding an extra bar chart (Expenses per Account) shows clearly from which account the money is comimg ..
+
+13-
+
 
 */

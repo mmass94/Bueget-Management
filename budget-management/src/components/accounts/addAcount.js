@@ -73,7 +73,7 @@ function AddAccountFrom() {
         >
           <MuiAlert onClose={handleClose} severity="error">
             Please Make sure that Bank Name and Balance are correctly entered
-            and tha Bank Name has not been entered before !
+            and tha Bank Name is entered before !
           </MuiAlert>
         </Snackbar>
       ) : (

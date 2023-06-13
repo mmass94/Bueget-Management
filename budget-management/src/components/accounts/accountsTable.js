@@ -6,9 +6,18 @@ import TableRow from "@mui/material/TableRow";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { useSelector } from "react-redux";
+import Button from "../formElements/button";
+import { removeAccount } from "../../redux";
+import { useDispatch } from "react-redux";
 
 function AccountsTable() {
+  const dispatch = useDispatch();
+
   const Accounts = useSelector((state) => state.account.accounts);
+
+  const handleRemoveAccount = (accountId) => {
+    dispatch(removeAccount(accountId));
+  };
 
   return (
     <span>
@@ -31,12 +40,12 @@ function AccountsTable() {
                 <TableCell align="center">{account.name}</TableCell>
                 <TableCell align="center">{account.amount}</TableCell>
                 <TableCell align="center">
-                  {/* <Button
-                    onClick={() => handleRemoveExpense(expense.id)}
+                  <Button
+                    onClick={() => handleRemoveAccount(account.id)}
                     ButtonName={"Delete"}
                     color={"error"}
                     size={"small"}
-                  ></Button> */}
+                  ></Button>
                 </TableCell>
               </TableRow>
             ))}
