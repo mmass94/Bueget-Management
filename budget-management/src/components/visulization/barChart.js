@@ -14,12 +14,6 @@ import Grid from "@mui/material/Grid";
 
 const BarChartComponent = () => {
   const Expenses = useSelector((state) => state.expense.expenses);
-  // const totalAmount = Expenses.reduce(
-  //   (sum, { amount }) => sum + parseInt(amount),
-  //   0
-  // );
-
-  // console.log("Total is:", totalAmount);
 
   const aggregatedExpenses = Expenses.reduce(
     (acc, { amount, category, ...rest }) => {

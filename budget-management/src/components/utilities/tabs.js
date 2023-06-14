@@ -6,6 +6,8 @@ import Addaccount from "../accounts/addAcount";
 import ExpenseForm from "../expenseForm";
 import BarChartComp from "../visulization/barChart";
 import BarchartbyDay from "../visulization/BarchartbyDay";
+import BarchartbyAccount from "../visulization/barchartByAccount";
+
 import TableofContents from "../table/tableOfContent";
 import { useSelector } from "react-redux";
 import ReadFromJson from "../readFromJson";
@@ -50,6 +52,10 @@ export default function NavTabs() {
         <Grid item xs={12} md={6}>
           {value === 2 && <BarchartbyDay />}
         </Grid>
+        <Grid item xs={12} md={6}>
+          {value === 2 && <BarchartbyAccount />}
+        </Grid>
+
         {value === 2 && <TotalAmount />}
       </Grid>
 
