@@ -1,11 +1,12 @@
 import { ADD_EXPENSE } from "./expensesTypes";
 import { REMOVE_EXPENSE } from "./expensesTypes";
 
-export const addExpense = (amount, category, comment, dateAndTime) => {
+export const addExpense = (amount, bank, category, comment, dateAndTime) => {
   return {
     type: ADD_EXPENSE,
     payload: {
       amount,
+      bank, // foreign key
       category,
       comment,
       dateAndTime,
@@ -13,10 +14,14 @@ export const addExpense = (amount, category, comment, dateAndTime) => {
   };
 };
 
-export const removeExpense = (expenseId) => {
+export const removeExpense = (expenseId, amount, bank) => {
   return {
     type: REMOVE_EXPENSE,
-    payload: expenseId,
+    payload: {
+      expenseId,
+      amount,
+      bank,
+    },
   };
 };
 

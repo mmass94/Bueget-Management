@@ -11,6 +11,8 @@ import MuiAlert from "@mui/material/Alert";
 import { useSelector } from "react-redux";
 import AccountsTable from "./accountsTable";
 function AddAccountFrom() {
+  const ALPHA_NUMERIC_DASH_REGEX = /^[a-zA-Z-]+$/;
+
   const [nameinput, setNameinput] = useState("");
   const [amountinput, setAmountinput] = useState("");
   const [error, setError] = useState(false);
@@ -25,7 +27,12 @@ function AddAccountFrom() {
   };
 
   const handleNameInputChange = (event) => {
-    setNameinput(event.target.value);
+    // setNameinput(event.target.value);
+    const inputValue = event.target.value;
+    const alphabetsOnly = inputValue.replace(/[^A-Za-z]/g, ""); // Remove non-alphabet characters
+
+    // Update the name input value
+    setNameinput(alphabetsOnly);
   };
 
   const handleClick = () => {

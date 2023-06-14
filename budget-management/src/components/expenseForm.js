@@ -9,9 +9,6 @@ import Selectone from "./formElements/selectone";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useSelector } from "react-redux";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
 import { categories } from "./formElements/categories";
 
 function ExpenseForm() {
@@ -50,9 +47,20 @@ function ExpenseForm() {
   const handleClick = () => {
     const now = new Date();
     const dateTimeString = now.toLocaleString();
-    if (amountinput > 0 && categorinput !== "" && Name !== "") {
+    if (
+      amountinput > 0 &&
+      categorinput !== "" &&
+      Name !== "" &&
+      accountBalance > !-3000
+    ) {
       dispatch(
-        addExpense(amountinput, categorinput, commentinput, dateTimeString)
+        addExpense(
+          amountinput,
+          Name,
+          categorinput,
+          commentinput,
+          dateTimeString
+        )
       );
       const selectedAccount = Accounts.find((account) => account.name === Name);
       if (selectedAccount) {
@@ -90,7 +98,7 @@ function ExpenseForm() {
         >
           <MuiAlert onClose={handleClose} severity="error">
             Please make sure that the Account , Expense amount and category are
-            correctly entered!
+            correctly entered and your balcnce is not less than 3000!
           </MuiAlert>
         </Snackbar>
       ) : (
