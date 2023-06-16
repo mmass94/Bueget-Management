@@ -4,6 +4,6 @@ export { updateExpenses } from "./expenses/expensesActions";
 export { addAccount } from "./accounts/accountsActions";
 export { updateAccountBalance } from "./accounts/accountsActions";
 export { removeAccount } from "./accounts/accountsActions";
-
-// export { buyIcecream } from "./Icecream/IcecreamActions";
-// export * from "./user/userActions";
+export { signUp } from "./auth/authActions";
+export { signIn } from "./auth/authActions";
+export { signOut } from "./auth/authActions";

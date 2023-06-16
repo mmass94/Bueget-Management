@@ -14,16 +14,10 @@ export const addExpense = (amount, bank, category, comment, dateAndTime) => {
   };
 };
 
-export const removeExpense = (expenseId, amount, bank) => {
-  return {
-    type: REMOVE_EXPENSE,
-    payload: {
-      expenseId,
-      amount,
-      bank,
-    },
-  };
-};
+export const removeExpense = (expenseId) => ({
+  type: REMOVE_EXPENSE,
+  payload: expenseId,
+});
 
 // actions.js
 export const updateExpenses = (expenses) => ({

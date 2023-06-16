@@ -6,20 +6,22 @@ import TableRow from "@mui/material/TableRow";
 import Button from "../formElements/button";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { removeExpense } from "../../redux/index";
+// import { removeExpense } from "../../redux/index";
+import { removeExpense } from "../../redux";
 
 function TableOfContent() {
   const dispatch = useDispatch();
   const expensesPerPage = 6; // Number of expenses to display per page
   const [currentPage, setCurrentPage] = useState(0);
-  const Accounts = useSelector((state) => state.account.accounts);
 
   const Expenses = useSelector((state) => state.expense.expenses);
   console.log("expenses are:", Expenses);
   console.log("expenses type is:", typeof Expenses);
 
-  const handleRemoveExpense = (expenseId, amount, bank) => {
-    dispatch(removeExpense(expenseId, amount, bank));
+  const handleRemoveExpense = (expenseId) => {
+    dispatch(removeExpense(expenseId));
+
+    console.log("id is:", expenseId);
   };
 
   // Reverse the order of expenses array
@@ -54,7 +56,6 @@ function TableOfContent() {
             <TableBody>
               <TableRow>
                 <TableCell>Amount</TableCell>
-                <TableCell>Bank</TableCell>
                 <TableCell>Category</TableCell>
                 <TableCell align="center">Comment</TableCell>
                 <TableCell align="center">Time</TableCell>
@@ -65,19 +66,12 @@ function TableOfContent() {
                   <TableCell align="center" key={expense.id}>
                     {expense.amount}
                   </TableCell>
-                  <TableCell align="center">{expense.bank}</TableCell>
                   <TableCell align="center">{expense.category}</TableCell>
                   <TableCell align="center">{expense.comment}</TableCell>
                   <TableCell align="center">{expense.dateAndTime}</TableCell>
                   <TableCell align="center">
                     <Button
-                      onClick={() =>
-                        handleRemoveExpense(
-                          expense.id,
-                          expense.amount,
-                          expense.bank
-                        )
-                      }
+                      onClick={() => handleRemoveExpense(expense.id)}
                       ButtonName={"Delete"}
                       color={"error"}
                       size={"small"}

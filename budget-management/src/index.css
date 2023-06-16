@@ -17,3 +17,10 @@ code {
   font-style: oblique;
   font-size: 20px;
 }
+.error-message {
+  color: red;
+}
+
+.success-message {
+  color: green;
+}

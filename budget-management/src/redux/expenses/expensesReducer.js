@@ -17,7 +17,6 @@ function expenseReducer(state = initialState, action) {
           {
             id: uuidv4(), // Generate a unique ID
             amount: action.payload.amount,
-            bank: action.payload.bank,
             category: action.payload.category,
             comment: action.payload.comment,
             dateAndTime: action.payload.dateAndTime,
@@ -33,6 +32,15 @@ function expenseReducer(state = initialState, action) {
         ...state,
         expenses: updatedExpenses,
       };
+
+    // case REMOVE_ACCOUNT:
+    //   const updatedAccounts = state.accounts.filter(
+    //     (account) => account.id !== action.payload
+    //   );
+    //   return {
+    //     ...state,
+    //     accounts: updatedAccounts,
+    //   };
 
     case UPDATE_EXPENSES:
       return {
