@@ -3,20 +3,32 @@ import { saveAs } from "file-saver";
 import Button from "./formElements/button";
 
 const SaveExpensesButton = () => {
-  const Expenses = useSelector((state) => state.expense.expenses);
+  const expenses = useSelector((state) => state.expense.expenses);
+  const accounts = useSelector((state) => state.account.accounts);
+  const currentUser = useSelector((state) =>
+    state.auth.users.find((user) => user.isAuthenticated)
+  );
 
   const handleSaveClick = () => {
-    const jsonExpenses = JSON.stringify(Expenses);
-    console.log("from JSON comp  JSON.stringify:", jsonExpenses);
+    const data = {
+      User: {
+        fullName: currentUser.fullName,
+      },
+      Accounts: accounts,
+      Expenses: expenses,
+    };
 
-    console.log("from JSON comp expenses are :", Expenses);
-    const blob = new Blob([jsonExpenses], { type: "application/json" });
-    saveAs(blob, "expenses.json");
+    const jsonData = JSON.stringify(data);
+
+    const blob = new Blob([jsonData], {
+      type: "application/json",
+    });
+    saveAs(blob, "data.json");
   };
 
   return (
     <Button
-      ButtonName={"save expenses into json "}
+      ButtonName={"Save Accounts and Expenses as JSON"}
       onClick={handleSaveClick}
       color={"secondary"}
       size={"small"}
