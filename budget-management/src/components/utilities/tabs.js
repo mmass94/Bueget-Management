@@ -7,13 +7,14 @@ import ExpenseForm from "../expenseForm";
 import BarChartComp from "../visulization/barChart";
 import BarchartbyDay from "../visulization/BarchartbyDay";
 import BarchartbyAccount from "../visulization/barchartByAccount";
-
 import TableofContents from "../table/tableOfContent";
 import { useSelector } from "react-redux";
 import ReadFromJson from "../readFromJson";
 import SaveTomJson from "../saveToJson";
 import Grid from "@mui/material/Grid";
 import TotalAmount from "../totalAmount";
+import SignOutButton from "../users/signout";
+
 export default function NavTabs() {
   const Accounts = useSelector((state) => state.account.accounts);
   const Expenses = useSelector((state) => state.expense.expenses);
@@ -24,10 +25,12 @@ export default function NavTabs() {
     setValue(newValue);
   };
 
-  console.log("Accounts length is ", Accounts.length);
-
   return (
     <Box sx={{ width: "100%" }}>
+      <Grid item xs={2} md={2} l={12}>
+        <SignOutButton />
+      </Grid>
+
       <Tabs value={value} onChange={handleChange} aria-label="nav tabs example">
         <Tab label="Add Accounts" />
         <Tab

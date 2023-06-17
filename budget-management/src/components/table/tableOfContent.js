@@ -15,13 +15,9 @@ function TableOfContent() {
   const [currentPage, setCurrentPage] = useState(0);
 
   const Expenses = useSelector((state) => state.expense.expenses);
-  console.log("expenses are:", Expenses);
-  console.log("expenses type is:", typeof Expenses);
 
   const handleRemoveExpense = (expenseId) => {
     dispatch(removeExpense(expenseId));
-
-    console.log("id is:", expenseId);
   };
 
   // Reverse the order of expenses array

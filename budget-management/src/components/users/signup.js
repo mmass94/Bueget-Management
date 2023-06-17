@@ -10,6 +10,7 @@ import Box from "@mui/material/Box";
 import { validateEmail } from "./validateEmail";
 import bcrypt from "bcryptjs";
 import InputLabel from "@mui/material/InputLabel";
+
 const SignUpForm = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const SignUpForm = () => {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,6 +60,7 @@ const SignUpForm = () => {
         confirmPassword: "",
       });
       setErrors({});
+      setSuccessMessage("Signed up successfully please sign in!");
     } else {
       setErrors(validationErrors);
     }
@@ -97,6 +100,11 @@ const SignUpForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Box display="flex" flexDirection="column" alignItems="center">
+        {successMessage && (
+          <Box mb={2} color="green">
+            {successMessage}
+          </Box>
+        )}
         <Box mb={2}>
           <TextField
             label="Full Name"

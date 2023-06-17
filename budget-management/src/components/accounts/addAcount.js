@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addAccount } from "../../redux/index";
+import { addAccount, signOut } from "../../redux/index";
 import InputField from "../formElements/inputField";
 import Button from "../formElements/button";
 import Box from "@mui/material/Box";
@@ -10,7 +10,8 @@ import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
 import { useSelector } from "react-redux";
 import AccountsTable from "./accountsTable";
-function AddAccountFrom() {
+
+function AddAccountForm() {
   const ALPHA_NUMERIC_DASH_REGEX = /^[a-zA-Z-]+$/;
 
   const [nameinput, setNameinput] = useState("");
@@ -79,15 +80,21 @@ function AddAccountFrom() {
           align="middle"
         >
           <MuiAlert onClose={handleClose} severity="error">
-            Please Make sure that Bank Name and Balance are correctly entered
-            and tha Bank Name is entered before !
+            Please make sure that the Bank Name and Balance are correctly
+            entered and that the Bank Name is entered before!
           </MuiAlert>
         </Snackbar>
       ) : (
         ""
       )}
       <Box sx={{ m: 3 }} />
-
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginRight: "16px",
+        }}
+      ></Box>
       <Grid container>
         <Grid item xs={12} md={3} l={3}>
           <InputField
@@ -114,7 +121,7 @@ function AddAccountFrom() {
             label={"Balance"}
           ></InputField>
         </Grid>
-        {/* <Box sx={{ t: -2 }} /> */}
+
         <Grid item xs={2} md={2} l={12}>
           <Button
             ButtonName={"Add account"}
@@ -132,4 +139,4 @@ function AddAccountFrom() {
   );
 }
 
-export default AddAccountFrom;
+export default AddAccountForm;
